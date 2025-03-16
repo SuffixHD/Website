@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Menü</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    /* Stile für das gesamte Dokument */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+/* Stile für das Menü */
+.menu {
+    width: 100%;
+    max-width: 400px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    border-bottom: 1px solid #ddd;
+}
+
+.menu li:last-child {
+    border-bottom: none;
+}
+
+/* Stile für die Links */
+.menu a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    padding: 15px 20px;
+    transition: background-color 0.3s ease;
+}
+
+.menu a:hover {
+    background-color: #007BFF;
+    color: #fff;
+}
+
+/* Stile für den Pfeil */
+.arrow {
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Farbe und Pfeil-Transformation beim Hovern */
+.menu a:hover .arrow {
+    transform: translateX(5px);
+    color: #fff;
+}
+
+/* Responsives Design */
+@media (max-width: 600px) {
+    .menu a {
+        padding: 10px 15px;
+    }
+}
+
+</style>
+<body>
+    <nav class="menu">
+        <ul>
+            <li><a href="https://example.com">Menüpunkt 1 <span class="arrow">→</span></a></li>
+            <li><a href="https://example.com">Menüpunkt 2 <span class="arrow">→</span></a></li>
+            <li><a href="https://example.com">Menüpunkt 3 <span class="arrow">→</span></a></li>
+            <li><a href="https://example.com">Menüpunkt 4 <span class="arrow">→</span></a></li>
+        </ul>
+    </nav>
+</body>
+</html>

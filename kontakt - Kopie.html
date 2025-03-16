@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kontaktiere uns</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            background-image: url("hintergrund2.jpg");
+            background-size: cover;
+            background-position: center;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .kontakt-info {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            height: calc(100vh - 60px);
+            padding: 20px;
+        }
+
+        .kontakt-info div {
+            text-align: center;
+        }
+
+        .kontakt-info img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid #333;
+            margin-bottom: 10px;
+        }
+
+        .kontakt-info h2 {
+            color: #333;
+        }
+
+        .kontakt-info p {
+            color: #555;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .zurueck-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .zurueck-button:hover {
+            background-color: #555;
+        }
+
+        .menu {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .menu div {
+            width: 100%;
+            height: 4px;
+            background-color: #ffffff;
+        }
+
+        .options {
+            display: none;
+            position: fixed;
+            top: 50px;
+            right: 10px;
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            color: white;
+        }
+
+        .options button {
+            display: block;
+            width: 100%;
+            text-align: left;
+            margin-bottom: 10px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .options button:hover {
+            text-decoration: underline;
+        }
+
+        .dark-mode {
+            background-color: #333;
+            color: white;
+        }
+
+       
+        
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Kontaktiere uns</h1>
+        <h5>Leitung Sandra und Michael Abel</h5>
+    </header>
+
+    <section class="kontakt-info">
+    
+        <div class="textbackground">
+            <img src="haus.JPG" alt="Bildbeschreibung">
+            <h2><span style="background-color: rgb(255, 255, 255);">Am Deutschhof 19</span></h2>
+            <p><span style="background-color: rgb(255, 255, 255);">Am Deutschhof 19<br>Schifferstadt, 67105</span></p>
+        </div>
+        <div>
+            <img src="telefon.png" alt="Bildbeschreibung">
+            <h2><span style="background-color: rgb(255, 255, 255);">Telefon</span></h2>
+            <p><span style="background-color: rgb(255, 255, 255);">+49 06235 920165</span></p>
+        </div>
+        <div>
+            <img src="mail.jpg" alt="Bildbeschreibung">
+            <h2><span style="background-color: rgb(255, 255, 255);">E-Mail</span></h2>
+            <p><span style="background-color: rgb(255, 255, 255);">Sandra_Abel@web.de<br>Ingenieurbuero.Abel@t-online.de</span></p>
+        </div>
+        <div class="menu" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    
+        <div id="options" class="options">
+            <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+        </div>
+
+    </section>
+
+    <a href="javascript:history.back()" class="zurueck-button">Zurück</a>
+
+    <footer>
+        <p>Copyright © 2023 Ingenieurbuero Abel</p>
+    </footer>
+    <script>
+        function toggleMenu() {
+            var element = document.getElementById("options");
+            element.style.display = element.style.display === "none" ? "block" : "none";
+        }
+
+        function toggleDarkMode() {
+            var element = document.body;
+            element.classList.toggle("dark-mode");
+        }
+    </script>
+</body>
+</html>

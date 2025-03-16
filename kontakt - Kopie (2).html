@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontaktiere uns</title>
+    <style>
+        /* Globales Layout */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            background-image: url("hintergrund2.jpg");
+            background-size: cover;
+            background-position: center;
+            transition: background-color 0.5s ease;
+        }
+
+        /* Zurück Button */
+        .zurueck-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            z-index: 20; /* Höher als der Header */
+            animation: slideDown 1s ease-in-out; /* Gleitet zusammen mit dem Header */
+        }
+
+        .zurueck-button:hover {
+            background-color: #1abc9c;
+            transform: scale(1.1);
+        }
+
+        /* Header */
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 10;
+            animation: slideDown 1s ease-in-out;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+        header h5 {
+            font-size: 1.2em;
+            font-weight: 400;
+            margin: 5px 0;
+        }
+
+        /* Kontakt-Info */
+        .kontakt-info {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            height: calc(100vh - 80px); /* Header ist fixiert */
+            padding: 20px;
+            flex-wrap: wrap;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .kontakt-info div {
+            text-align: center;
+            transition: transform 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .kontakt-info div:hover {
+            transform: translateY(-10px);
+        }
+
+        .kontakt-info img {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #333;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+            cursor: pointer; /* Zeigt an, dass das Bild klickbar ist */
+        }
+
+        .kontakt-info img:hover {
+            transform: scale(1.1);
+        }
+
+        .kontakt-info h2 {
+            color: #333;
+            font-size: 1.5em;
+        }
+
+        .kontakt-info p {
+            color: #555;
+            font-size: 1em;
+            line-height: 1.5;
+        }
+
+        /* Buttons */
+        .kontakt-info button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .kontakt-info button:hover {
+            background-color: #1abc9c;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        /* Menü Button */
+        .menu {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .menu div {
+            width: 100%;
+            height: 4px;
+            background-color: #ffffff;
+        }
+
+        .options {
+            display: none;
+            position: fixed;
+            top: 50px;
+            right: 10px;
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .options button {
+            display: block;
+            width: 100%;
+            text-align: left;
+            margin-bottom: 10px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .options button:hover {
+            text-decoration: underline;
+        }
+
+        .dark-mode {
+            background-color: #333;
+            color: white;
+        }
+
+        /* Animation */
+        @keyframes slideDown {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Responsive Design */
+        /* Für kleine Bildschirme wie Handys */
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            header h5 {
+                font-size: 1em;
+            }
+
+            .kontakt-info {
+                flex-direction: column;
+                height: auto;
+                padding: 10px;
+            }
+
+            .kontakt-info div {
+                margin-bottom: 20px;
+            }
+
+            .kontakt-info img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .zurueck-button {
+                font-size: 14px;
+                padding: 8px 16px;
+                top: 10px;
+                left: 10px;
+            }
+
+            footer {
+                font-size: 0.8em;
+                padding: 10px;
+            }
+        }
+
+        /* Für Tablets und mittlere Bildschirme */
+        @media (max-width: 1024px) {
+            header h1 {
+                font-size: 2.2em;
+            }
+
+            header h5 {
+                font-size: 1.1em;
+            }
+
+            .kontakt-info {
+                flex-direction: column;
+                padding: 15px;
+            }
+
+            .kontakt-info img {
+                width: 200px;
+                height: 200px;
+            }
+
+            .zurueck-button {
+                font-size: 15px;
+                padding: 9px 18px;
+            }
+
+            footer {
+                font-size: 0.85em;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="zurueck-button" onclick="window.history.back()">Zurück</button>
+
+    <header>
+        <h1>Kontaktiere uns</h1>
+        <h5>Leitung Sandra und Michael Abel</h5>
+    </header>
+
+    <section class="kontakt-info">
+        <div>
+            <img src="Haus.jpg" alt="Adresse" onclick="openGoogleMaps()"> <!-- Bild hinzugefügt und klickbar gemacht -->
+            <h2>Adresse</h2>
+            <p>Schifferstadt</p>
+            <p>Am Deutschhof 19</p>
+            <button onclick="openGoogleMaps()">Google Route</button>
+        </div>
+        <div>
+            <img src="telefon.png" alt="Telefon" onclick="callPhone()"> <!-- Bild klickbar -->
+            <h2>Telefon</h2>
+            <p>+49 06235 920165</p>
+            <button onclick="callPhone()">Anrufen</button>
+        </div>
+        <div>
+            <img src="mail.jpg" alt="E-Mail" onclick="sendEmail()"> <!-- Bild klickbar -->
+            <h2>E-Mail</h2>
+            <p>Sandra_Abel@web.de<br>Ingenieurbuero.Abel@t-online.de</p>
+            <button onclick="sendEmail()">E-Mail schreiben</button>
+        </div>
+    </section>
+
+    <div class="menu" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <div class="options" id="options">
+        <button onclick="toggleDarkMode()">Dunkelmodus</button>
+        <button onclick="toggleMenu()">Schließen</button>
+    </div>
+
+    <footer>
+        <p>Copyright © 2023 Ingenieurbüro Abel</p>
+        <p>Impressum</p>
+    </footer>
+
+    <script>
+        function openGoogleMaps() {
+            window.open("https://www.google.com/maps?q=Am+Deutschhof+19,Schifferstadt", "_blank");
+        }
+
+        function callPhone() {
+            window.location.href = "tel:+4906235920165";
+        }
+
+        function sendEmail() {
+            window.location.href = "mailto:Sandra_Abel@web.de";
+        }
+
+        function toggleMenu() {
+            const options = document.getElementById("options");
+            options.style.display = (options.style.display === "none" || options.style.display === "") ? "block" : "none";
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ingenieurbüro Abel</title>
+  <style>
+    :root {
+      --header-bg: rgba(0, 0, 0, 0.5);
+      --text-color: white;
+      --accent-color: gray;
+    }
+    /* --- Desktop-Version (unverändert) --- */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url("hintergrund.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: var(--text-color);
+    }
+    header {
+      background-color: var(--header-bg);
+      text-align: center;
+      padding: 30px;
+    }
+    header h1 {
+      margin: 0;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: var(--header-bg);
+      padding: 10px 0;
+    }
+    nav a {
+      text-decoration: none;
+      color: var(--text-color);
+      margin: 0 15px;
+      padding: 10px 20px;
+      border-radius: 7px;
+      border: 1px solid rgb(61, 106, 255);
+      font-size: 14px;
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 2px;
+      background: transparent;
+      transition: all 0.2s ease-in;
+      position: relative;
+      overflow: hidden;
+    }
+    nav a:hover {
+      background: rgb(61, 106, 255);
+      box-shadow: 0 0 30px 5px rgba(0, 142, 236, 0.815);
+    }
+    .hero {
+      height: calc(100vh - 150px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 3em;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    footer {
+      background-color: var(--header-bg);
+      color: var(--text-color);
+      text-align: center;
+      padding: 20px;
+    }
+    /* Footer-Inhalt standardmäßig sichtbar (Desktop) */
+    #footerContent {
+      display: block;
+    }
+    /* --- Globale Definition des Toggle-Buttons --- */
+    .cta {
+      /* Standardmäßig nicht anzeigen (Desktop) */
+      display: none;
+    }
+    /* --- Mobile-Version (max-width: 768px) --- */
+    @media (max-width: 768px) {
+      /* Allgemeine Anpassungen */
+      header {
+        padding: 20px;
+      }
+      header h1 {
+        font-size: 1.8em;
+      }
+      nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 0;
+      }
+      nav a {
+        display: block;
+        width: 90%;
+        text-align: center;
+        font-size: 16px;
+        margin: 5px 0;
+        padding: 15px 0;
+        border: 1px solid rgba(61, 106, 255, 0.8);
+      }
+      .hero {
+        height: auto;
+        padding: 30px 10px;
+      }
+      .hero h1 {
+        font-size: 2.5em;
+        margin: 0;
+        padding: 0 10px;
+      }
+      footer {
+        padding: 15px;
+        font-size: 14px;
+        position: relative;
+        margin-top: 50vh; /* Fügt einen Scroll-Abstand hinzu */
+        background-color: var(--header-bg); /* Hintergrund sichergestellt */
+      }
+      /* In der mobilen Ansicht: Footer-Inhalt ausblenden */
+      #footerContent {
+        display: none;
+      }
+      /* Toggle-Button (Footer) – nur in der mobilen Ansicht sichtbar */
+      .cta {
+        display: block;
+        position: relative;
+        margin: 20px auto;
+        padding: 12px 18px;
+        transition: all 0.2s ease;
+        border: none;
+        background: none;
+        cursor: pointer;
+      }
+      .cta:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        border-radius: 50px;
+        background: #b1dae7;
+        width: 45px;
+        height: 45px;
+        transition: all 0.3s ease;
+      }
+      .cta span {
+        position: relative;
+        font-family: "Ubuntu", sans-serif;
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        color: #234567;
+      }
+      .cta svg {
+        position: relative;
+        top: 0;
+        margin-left: 10px;
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke: #234567;
+        stroke-width: 2;
+        transform: translateX(-5px);
+        transition: all 0.3s ease;
+      }
+      .cta:hover:before {
+        width: 100%;
+        background: #b1dae7;
+      }
+      .cta:hover svg {
+        transform: translateX(0);
+      }
+      .cta:active {
+        transform: scale(0.95);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ingenieurbüro Abel</h1>
+  </header>
+
+  <nav>
+    <a href="projekt.html">Projekte</a>
+    <a href="kontakt.html">Kontakt</a>
+    <a href="Personen.html">Personen</a>
+    <a href="dienstleistungen.html">Dienstleistungen</a>
+  </nav>
+
+  <section class="hero">
+    <h1>Wir bauen die Zukunft</h1>
+  </section>
+
+  <footer>
+    <!-- Der Toggle-Button wird nur in der mobilen Ansicht angezeigt -->
+    <button class="cta" onclick="toggleFooter()">
+      <span id="toggleText">Footer anzeigen</span>
+      <svg width="15px" height="10px" viewBox="0 0 13 10">
+        <path d="M1,5 L11,5"></path>
+        <polyline points="8 1 12 5 8 9"></polyline>
+      </svg>
+    </button>
+    <div id="footerContent">
+      <p>Copyright © 2023 Ingenieurbüro Abel</p>
+      <p>Impressum:</p>
+      <p>
+        <strong>Ingenieurbüro Abel:</strong> Sandra Abel &amp; Michael Abel<br>
+        <strong>Anschrift:</strong> Am Deutschhof 19, 67105 Schifferstadt<br>
+        <strong>E-Mail:</strong> Sandra_Abel@outlook.de &amp; Ingenieurbuero.Abel@t-online.de<br>
+        <strong>Telefonnummer:</strong> +49 06235 920165<br>
+      </p>
+      <div class="Datenschutzerklärung">
+        <a href="Datenschutzerklärung.html">Datenschutzerklärung</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleFooter() {
+      var footerContent = document.getElementById("footerContent");
+      var toggleText = document.getElementById("toggleText");
+      if (footerContent.style.display === "none" || footerContent.style.display === "") {
+        footerContent.style.display = "block";
+        toggleText.textContent = "Footer ausblenden";
+      } else {
+        footerContent.style.display = "none";
+        toggleText.textContent = "Footer anzeigen";
+      }
+    }
+  </script>
+</body>
+</html>

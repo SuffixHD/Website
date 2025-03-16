@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schnelleinstieg</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .ce-linklist__list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+        }
+
+        h2 {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .ce-linklist__item {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #414141;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: color 0.3s ease;
+            width: 100%;
+        }
+
+        .ce-linklist__item:hover {
+            color: #000;
+        }
+
+        .arrow-button-wrap {
+            margin-right: 15px;
+        }
+
+        .arrow--button {
+            width: 38px;
+            height: 38px;
+        }
+
+        .ce-linklist__link {
+            flex-grow: 1;
+        }
+
+        .arrow-button-wrap svg circle {
+            fill: #414141;
+        }
+
+        .arrow-button-wrap svg path {
+            fill: #fff;
+        }
+
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 1.5em;
+            }
+
+            .ce-linklist__item {
+                font-size: 1em;
+            }
+
+            li {
+                margin: 15px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .ce-linklist__item {
+                font-size: 0.9em;
+            }
+
+            .arrow--button {
+                width: 30px;
+                height: 30px;
+            }
+
+            li {
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <ul class="ce-linklist__list">
+        <h2><p>Schnelleinstieg</p></h2>
+
+        <li>
+            <a href="https://gym-schiff.de/schule/neu-bei-uns" class="ce-linklist__item">
+                <div class="arrow-button-wrap">
+                    <svg class="arrow--button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 38">
+                        <circle cx="19" cy="19" r="19"></circle>
+                        <path d="M14,.75H0V-.75H14Z" transform="translate(14 19)" fill="#fff"></path>
+                        <path d="M.884,12.459L-.177,11.4,5.08,6.141-.177.884.884-.177,7.2,6.141Z" transform="translate(19.5 12)" fill="#fff"></path>
+                    </svg>
+                </div>
+                <div class="ce-linklist__link">
+                    Neu bei uns
+                </div>
+            </a>
+        </li>
+
+        <li>
+            <a href="https://gym-schiff.de/schule/schwerpunkte" class="ce-linklist__item">
+                <div class="arrow-button-wrap">
+                    <svg class="arrow--button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 38">
+                        <circle cx="19" cy="19" r="19"></circle>
+                        <path d="M14,.75H0V-.75H14Z" transform="translate(14 19)" fill="#fff"></path>
+                        <path d="M.884,12.459L-.177,11.4,5.08,6.141-.177.884.884-.177,7.2,6.141Z" transform="translate(19.5 12)" fill="#fff"></path>
+                    </svg>
+                </div>
+                <div class="ce-linklist__link">
+                    Schwerpunkte
+                </div>
+            </a>
+        </li>
+
+        <li>
+            <a href="https://gym-schiff.de/kollegium" class="ce-linklist__item">
+                <div class="arrow-button-wrap">
+                    <svg class="arrow--button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 38">
+                        <circle cx="19" cy="19" r="19"></circle>
+                        <path d="M14,.75H0V-.75H14Z" transform="translate(14 19)" fill="#fff"></path>
+                        <path d="M.884,12.459L-.177,11.4,5.08,6.141-.177.884.884-.177,7.2,6.141Z" transform="translate(19.5 12)" fill="#fff"></path>
+                    </svg>
+                </div>
+                <div class="ce-linklist__link">
+                    Kollegium
+                </div>
+            </a>
+        </li>
+
+        <li>
+            <a href="https://gym-schiff.de/downloads" class="ce-linklist__item">
+                <div class="arrow-button-wrap">
+                    <svg class="arrow--button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 38">
+                        <circle cx="19" cy="19" r="19"></circle>
+                        <path d="M14,.75H0V-.75H14Z" transform="translate(14 19)" fill="#fff"></path>
+                        <path d="M.884,12.459L-.177,11.4,5.08,6.141-.177.884.884-.177,7.2,6.141Z" transform="translate(19.5 12)" fill="#fff"></path>
+                    </svg>
+                </div>
+                <div class="ce-linklist__link">
+                    Downloads
+                </div>
+            </a>
+        </li>
+
+    </ul>
+
+</body>
+</html>

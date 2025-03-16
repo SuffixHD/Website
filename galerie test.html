@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fotogalerie</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .gallery {
+            display: none;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(5, 1fr);
+            gap: 8px;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e9ecef;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Schließen Button für Galerie */
+        .gallery-close {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            background-color: #ff4757;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 40px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease;
+        }
+
+        .gallery-close:hover {
+            background-color: #e04050;
+        }
+
+        /* Modales Fenster für Vollbild */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            animation: zoom 0.6s;
+        }
+
+        @keyframes zoom {
+            from {transform: scale(0.4)}
+            to {transform: scale(1)}
+        }
+
+        /* Schließen Button für Modal */
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Pfeile zum Wechseln der Bilder */
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -50px;
+            color: white;
+            font-weight: bold;
+            font-size: 30px;
+            transition: 0.3s;
+            user-select: none;
+            border-radius: 0 3px 3px 0;
+        }
+
+        .next {
+            right: 10%;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev {
+            left: 10%;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button id="open-gallery-btn">Galerie öffnen</button>
+        <div id="gallery" class="gallery">
+            <!-- Die Fotos werden hier mit JavaScript dynamisch eingefügt -->
+            <span class="gallery-close">&times;</span>
+        </div>
+    </div>
+
+    <!-- Modal für Vollbild -->
+    <div id="modal" class="modal">
+        <span class="close">&times;</span>
+        <span class="prev">&#10094;</span>
+        <span class="next">&#10095;</span>
+        <img class="modal-content" id="modal-img">
+    </div>
+
+    <script>
+        const openGalleryBtn = document.getElementById('open-gallery-btn');
+        const gallery = document.getElementById('gallery');
+        const modal = document.getElementById('modal');
+        const modalImg = document.getElementById('modal-img');
+        const closeBtn = document.querySelector('.close');
+        const prevBtn = document.querySelector('.prev');
+        const nextBtn = document.querySelector('.next');
+        const galleryCloseBtn = document.querySelector('.gallery-close');
+        let currentIndex = 0;
+        let images = [];
+
+        openGalleryBtn.addEventListener('click', function() {
+            gallery.style.display = 'grid';
+            openGalleryBtn.style.display = 'none';
+
+            // Verhindern, dass die Bilder mehrfach hinzugefügt werden
+            if (gallery.children.length === 1) { // Nur der Schließen Button ist bereits da
+                for (let i = 0; i < 25; i++) {  // 5x5 = 25 Bilder
+                    const img = document.createElement('img');
+                    img.src = 'Beispiel.png';
+                    img.alt = `Foto ${i + 1}`;
+                    gallery.appendChild(img);
+                    images.push(img);
+
+                    // Bild klickbar machen für Vollbildanzeige
+                    img.addEventListener('click', function() {
+                        currentIndex = i;
+                        openModal(img.src);
+                    });
+                }
+            }
+        });
+
+        galleryCloseBtn.addEventListener('click', function() {
+            gallery.style.display = 'none';
+            openGalleryBtn.style.display = 'inline-block';
+        });
+
+        function openModal(src) {
+            modal.style.display = 'block';
+            modalImg.src = src;
+        }
+
+        closeBtn.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+
+        prevBtn.addEventListener('click', function() {
+            currentIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1;
+            modalImg.src = images[currentIndex].src;
+        });
+
+        nextBtn.addEventListener('click', function() {
+            currentIndex = (currentIndex === images.length - 1) ? 0 : currentIndex + 1;
+            modalImg.src = images[currentIndex].src;
+        });
+    </script>
+</body>
+</html>

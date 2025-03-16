@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projektname - Galerie</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .project-content {
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .thumbnail {
+            width: 100%;
+            max-width: 600px;
+            display: block;
+            margin: 0 auto 20px auto;
+            border-radius: 8px;
+        }
+
+        .project-title {
+            font-size: 2em;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .project-description {
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .project-details {
+            font-size: 1em;
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 12px 25px;
+            background: #007BFF;
+            color: #fff;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .project-link:hover {
+            background: #0056b3;
+        }
+
+        .gallery {
+            display: flex;
+            overflow-x: auto;
+            padding: 10px 0;
+            margin-bottom: 20px;
+            gap: 10px;
+            scrollbar-width: thin;
+            scrollbar-color: #888 #f4f4f4;
+        }
+
+        .gallery img {
+            flex: 0 0 auto;
+            width: 100%;
+            max-width: 200px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            flex-direction: column;
+            padding: 10px;
+        }
+
+        .lightbox img {
+            max-width: 95%;
+            max-height: 80%;
+            border-radius: 8px;
+            object-fit: contain;
+        }
+
+        .lightbox-caption {
+            margin-top: 10px;
+            color: #fff;
+            font-size: 1.2em;
+            text-align: center;
+        }
+
+        .lightbox-controls {
+    position: absolute;
+    top: 50%;
+    width: 100vw; /* Breite auf 100% des Viewports setzen */
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    padding: 0 20px;
+    pointer-events: none; /* Verhindert, dass Bilder die Pfeile verdecken */
+}
+
+.lightbox-controls span {
+    font-size: 3em;
+    color: #fff;
+    cursor: pointer;
+    user-select: none;
+    pointer-events: all; /* Aktiviert die Interaktion mit den Pfeilen */
+    margin: 0 20px; /* Abstand zum Rand */
+}
+
+.lightbox-controls span:hover {
+    color: #007BFF;
+}
+
+    
+
+        /* Scrollbar Styling */
+        .gallery::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .gallery::-webkit-scrollbar-track {
+            background: #f4f4f4;
+        }
+
+        .gallery::-webkit-scrollbar-thumb {
+            background-color: #888;
+            border-radius: 10px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .project-title {
+                font-size: 1.8em;
+            }
+
+            .project-description {
+                font-size: 1em;
+            }
+
+            .project-details {
+                font-size: 0.9em;
+            }
+
+            .gallery img {
+                max-width: 150px;
+            }
+
+            .lightbox-controls span {
+                font-size: 2em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .project-title {
+                font-size: 1.5em;
+            }
+
+            .project-description {
+                font-size: 0.9em;
+            }
+
+            .project-details {
+                font-size: 0.8em;
+            }
+
+            .gallery img {
+                max-width: 120px;
+            }
+
+            .lightbox-controls span {
+                font-size: 1.5em;
+            }
+        }
+
+        .lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 3em; /* Größerer Emoji */
+    cursor: pointer;
+    user-select: none;
+}
+
+.lightbox-close::before {
+    content: "❌"; /* Verwende den ❌-Emoji */
+}
+
+.lightbox-close:hover {
+    color: #FF0000; /* Farbe beim Hover auf Rot ändern */
+}
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="project-content">
+        <img src="DJI_0471.JPG" alt="Projekt Thumbnail" class="thumbnail">
+        
+        <h1 class="project-title">Mehrfamilienhaus in Bockenheim</h1>
+        <p class="project-description">
+            Mehrfamilienwohnhaus mit 13 Wohneinheiten und Tiefgarage. 
+        </p>
+        <p class="project-details">
+            <strong>Projektzeitraum:</strong> Januar 2023 - Juni 2023<br>
+            <strong>Verantwortliche:</strong> Max Mustermann, Maria Musterfrau<br>
+            <strong>Keine Ahnung was dahin könnte</strong> Hallo<br>
+        </p>
+        
+        <div class="gallery"></div>
+
+        <a href="projekt.html" class="project-link">Zurück zur Projektübersicht</a>
+    </div>
+</div>
+
+<div class="lightbox" id="lightbox">
+    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+    <div class="lightbox-controls">
+        <span onclick="prevImage()">&#10094;</span>
+        <span onclick="nextImage()">&#10095;</span>
+    </div>
+    <img id="lightbox-image" src="" alt="Großansicht">
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+</div>
+
+<script>
+    const images = [
+        { src: 'DJI_0458.JPG', caption: 'Bild 1 Beschreibung' },
+        { src: 'DJI_0461.JPG', caption: 'Bild 2 Beschreibung' },
+        { src: 'DJI_0471.JPG', caption: 'Bild 3 Beschreibung' },
+        { src: 'DJI_0462.JPG', caption: 'Bild 4 Beschreibung' },
+        { src: 'DJI_0466.JPG', caption: 'Bild 5 Beschreibung' },
+        { src: 'DJI_0456.JPG', caption: 'Beispiel Bild 1' },
+        { src: 'DJI_0457.JPG', caption: 'Beispiel Bild 2' },
+        { src: 'DJI_0459.JPG', caption: 'Beispiel Bild 3' },
+        { src: 'DJI_0460.JPG', caption: 'Beispiel Bild 4' }
+    ];
+
+    const galleryContainer = document.querySelector('.gallery');
+    
+    images.forEach((image, index) => {
+        const img = document.createElement('img');
+        img.src = image.src;
+        img.alt = `Bild ${index + 1}`;
+        img.onclick = () => openLightbox(index);
+        galleryContainer.appendChild(img);
+    });
+    
+    let currentIndex = 0;
+
+    function openLightbox(index) {
+        currentIndex = index;
+        document.getElementById('lightbox-image').src = images[currentIndex].src;
+        document.getElementById('lightbox-caption').innerText = images[currentIndex].caption;
+        document.getElementById('lightbox').style.display = 'flex';
+    }
+
+    function closeLightbox() {
+        document.getElementById('lightbox').style.display = 'none';
+    }
+
+    function nextImage() {
+        currentIndex = (currentIndex + 1) % images.length;
+        document.getElementById('lightbox-image').src = images[currentIndex].src;
+        document.getElementById('lightbox-caption').innerText = images[currentIndex].caption;
+    }
+
+    function prevImage() {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        document.getElementById('lightbox-image').src = images[currentIndex].src;
+        document.getElementById('lightbox-caption').innerText = images[currentIndex].caption;
+    }
+</script>
+
+</body>
+</html>

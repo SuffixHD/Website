@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        .gallery {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        .artwork {
+            width: 30%;
+            margin: 15px;
+            background-color: #fff;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .artwork:hover {
+            transform: scale(1.05);
+        }
+        .artwork img {
+            width: 100%;
+            height: auto;
+        }
+        .artwork h3, .artwork p {
+            margin: 0;
+            padding: 10px;
+        }
+
+        .zurueck-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+
+            text-decoration: none;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .zurueck-button:hover {
+            background-color: #555;
+        }
+
+        .footer {
+            position: relative;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #f8f9fa;
+            color: black;
+            text-align: center;
+            padding: 10px 0;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Personen</h1>
+    </div>
+    <div class="gallery">
+        <div class="artwork">
+            <img src="Beispiel.png" alt="Kunstwerk 1">
+            <h3>Sandra Abel</h3>
+            <p>Nach dem Abitur, zweijährige Ausbildung zur Bauzeichnerin im konstruktiven Ingenieurbau. Anschließend Studium des Bauingenieurwesens an der FH Kaiserslautern mit Abschluss als Dipl.-Ing. (FH) Fachrichtung konstruktiver Ingenieurbau</p>
+        <br>
+        <h3>Leitung des Ingenieurbueros Abel</h3>
+        
+        </div>
+        <div class="artwork">
+            <img src="Beispiel.png" alt="Kunstwerk 2">
+            <h3>Michael Abel</h3>
+            <p> Michael Abel hat an der Universität in Kaiserlautern Architektur studiert und arbeitet heute für die Stadt Ludwigshafen.</p>
+        </div>
+        <div class="artwork">
+            <img src="Beispiel.png" alt="Kunstwerk 3">
+            <h3>Amelie Abel</h3>
+            <p>Amelie Abel macht momentan ein Studium zur Architekteurin in wird vermutlicht 2024 ihren Bachelohr Abschluss machen und dem Ingenieurbuero Abel beitreten.</p>
+        </div>
+        <div class="artwork">
+            <img src="Beispiel.png" alt="Kunstwerk 4">
+            <h3>Angeilka Graf</h3>
+            <p>des ist ne Ziege, ja keine Ahnung  ⁓ Amelie</p>
+        </div>
+    </div>
+    <section>
+        <a href="javascript:history.back()" class="zurueck-button">Zurück</a>
+    </section>
+
+    <footer>
+        <p>Copyright © 2023 Ingenieurbuero Abel</p>
+        <p>Impressum:</p>
+        <p>
+</body>
+</html>
